@@ -1,15 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { ApolloProvider } from '@apollo/client';
+import { client } from './apollo/client';
 
-// Components
-import App from './App';
 // Styles
 import 'antd/dist/antd.css';
-import "assets/style.scss";
+import './assets/style.scss';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ApolloProvider client={client}>
+      <h1>hello</h1>
+    </ApolloProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
