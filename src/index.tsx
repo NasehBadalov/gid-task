@@ -4,7 +4,7 @@ import { ApolloProvider } from '@apollo/client';
 import { client } from './apollo/client';
 
 // Route
-import { Routes } from './routes/index';
+import { Routes } from './routes';
 // Styles
 import 'antd/dist/antd.css';
 import './assets/style.scss';
