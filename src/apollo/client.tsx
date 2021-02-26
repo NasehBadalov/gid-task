@@ -4,11 +4,10 @@ import { ApolloClient, from, HttpLink, InMemoryCache } from '@apollo/client';
 const errorlink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors) {
     // eslint-disable-next-line array-callback-return
-    graphQLErrors.map(({ message, location, path }) => {
+    graphQLErrors.map(({ message, path }) => {
       console.log(`
       GRAPHQL ERROR!!!
       message: ${message}
-      location: ${location}
       path: ${path}
       `);
     });
