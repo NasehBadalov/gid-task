@@ -1,0 +1,15 @@
+.Header {
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+  background-color: white;
+
+  &__wrapper {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    padding-left: 35px;
+    padding-right: 50px;
+  }
+  &__logo {
+    width: 180px;
+  }
+}

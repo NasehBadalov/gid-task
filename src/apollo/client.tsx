@@ -5,8 +5,8 @@ const errorlink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors) {
     // eslint-disable-next-line array-callback-return
     graphQLErrors.map(({ message, path }) => {
-      console.log(`
-      GRAPHQL ERROR!!!
+      console.error(`
+      GraphQL Error happened.
       message: ${message}
       path: ${path}
       `);
