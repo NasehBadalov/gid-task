@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
 export const getAllOpportunities = gql`
-  query getAllOpportunities {
-    allOpportunity(sort: "-accepted_count", page: 1) {
+  query getAllOpportunities($sort: String!, $page: Int!) {
+    allOpportunity(sort: $sort, page: $page) {
       data {
         id
         title

@@ -1,14 +1,19 @@
 .Opportunities {
   &__item {
     position: relative;
-    padding: 16px;
-    margin-top: 20px;
     border-bottom: 1px solid #ececec;
-    transition: background-color 0.2s;
     cursor: pointer;
-    &:hover {
-      background-color: #f9f9f9;
-      border-radius: 8px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    &-wrapper {
+      padding: 16px;
+      transition: background-color 0.2s;
+
+      &:hover {
+        background-color: #f9f9f9;
+        border-radius: 8px;
+      }
     }
     &-icon {
       position: absolute;
@@ -35,10 +40,11 @@
       color: #6b7586;
       font-size: 16px;
       line-height: 24px;
-      max-width: 75%;
+      width: 75%;
       overflow: hidden;
       text-overflow: ellipsis;
       margin-bottom: 14px;
+      height: 50px;
     }
     &-company {
       display: flex;
@@ -61,10 +67,21 @@
   &__header {
     padding: 8px;
     border-bottom: 1px solid #ececec;
+    color: #6b7586;
+    font-size: 14px;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     &-result {
-      color: #6b7586;
-      font-size: 14px;
-      line-height: 22px;
+    }
+    &-sort {
+      & > span {
+        display: inline-block;
+      }
+      .ant-select-selector {
+        border: none !important;
+      }
     }
   }
 }

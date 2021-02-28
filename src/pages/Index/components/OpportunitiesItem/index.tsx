@@ -48,25 +48,27 @@ export const OpportunityItem: React.FC<{ opportunity: IOpportunity }> = ({
 
   return (
     <div className="Opportunities__item">
-      <div className="row">
-        <div className="col-3">
-          <div className="Opportunities__item-img">
-            <span className="Opportunities__item-icon">{renderProgramIcon(programme.short_name_display)}</span>
-            <img style={{ width: '100%' }} src={image_url} alt={title} />
+      <div className="Opportunities__item-wrapper">
+        <div className="row">
+          <div className="col-3">
+            <div className="Opportunities__item-img">
+              <span className="Opportunities__item-icon">{renderProgramIcon(programme.short_name_display)}</span>
+              <img style={{ width: '100%' }} src={image_url} alt={title} />
+            </div>
           </div>
-        </div>
-        <div className="col-9">
-          <h1 className="Opportunities__item-title">{title}</h1>
-          <p className="Opportunities__item-info">
-            <span className="Opportunities__item-info-location">
-              {location ? location : 'Unkown location'} | {renderDuration()}
-            </span>
-            <span className="Opportunities__item-info-duration" />
-          </p>
-          <p className="Opportunities__item-desc">{description}</p>
-          <div className="Opportunities__item-company">
-            {branch ? <img className="Opportunities__item-company-img" src={branch.company.profile_photo} alt={branch.company.name} /> : ''}
-            <span className="Opportunities__item-company-name">{branch ? branch.company.name : 'Unknown Company'}</span>
+          <div className="col-9">
+            <h1 className="Opportunities__item-title">{title}</h1>
+            <p className="Opportunities__item-info">
+              <span className="Opportunities__item-info-location">
+                {location ? location : 'Unkown location'} | {renderDuration()}
+              </span>
+              <span className="Opportunities__item-info-duration" />
+            </p>
+            <p className="Opportunities__item-desc">{description}</p>
+            <div className="Opportunities__item-company">
+              {branch ? <img className="Opportunities__item-company-img" src={branch.company.profile_photo} alt={branch.company.name} /> : ''}
+              <span className="Opportunities__item-company-name">{branch ? branch.company.name : 'Unknown Company'}</span>
+            </div>
           </div>
         </div>
       </div>
