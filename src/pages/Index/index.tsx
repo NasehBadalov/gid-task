@@ -2,7 +2,7 @@ import React from 'react';
 import { useMutation } from '@apollo/client';
 import { updateOpportunity } from './mutations';
 // Components
-import { Panel } from '../../layout/Panel';
+import { Panel } from './components/Panel';
 import { Opportunities } from './components/Opportunities';
 
 export const Index: React.FC = () => {
@@ -14,13 +14,7 @@ export const Index: React.FC = () => {
 
   return (
     <div>
-      <Panel>
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col-12">Americas Opportunities</div>
-          </div>
-        </div>
-      </Panel>
+      <Panel />
       <Opportunities />
     </div>
   );

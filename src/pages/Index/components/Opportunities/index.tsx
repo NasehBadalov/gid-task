@@ -6,7 +6,7 @@ import { Loading } from '../../../../components/Loading';
 import { Button, Select } from 'antd';
 // TS
 import { IOpportunity } from '../../interfaces';
-import { sortByData } from '../../consts';
+import { initialState, sortByData } from '../../consts';
 // GraphQL
 import { useLazyQuery } from '@apollo/client';
 import { getAllOpportunities } from '../../queries';
@@ -14,11 +14,16 @@ import { getAllOpportunities } from '../../queries';
 import './_style.scss';
 
 export const Opportunities: React.FC = () => {
-  const [sortBy, setSortBy] = useState(sortByData[0].key);
-  const [opportunities, setOpportunities] = React.useState([]);
-  const [page, setPage] = React.useState(1);
-  const [paging, setPaging] = React.useState({ total_items: 0, current_page: 0, total_pages: 0 });
+  const [sortBy, setSortBy] = useState(initialState.sortBy);
+  const [opportunities, setOpportunities] = React.useState(initialState.opportunities);
+  const [page, setPage] = React.useState(initialState.page);
+  const [paging, setPaging] = React.useState(initialState.paging);
   const [getOpportunities, { loading, data }] = useLazyQuery(getAllOpportunities);
+
+  React.useEffect(() => {
+    setOpportunities(initialState.opportunities);
+    setPage(initialState.page);
+  }, [sortBy]);
 
   React.useEffect(() => {
     getOpportunities({
@@ -28,14 +33,15 @@ export const Opportunities: React.FC = () => {
       },
     });
   }, [sortBy, page]);
+
   React.useEffect(() => {
     if (data && !loading) {
       const {
         allOpportunity: { data: opportunities, paging },
       } = data;
 
-      setOpportunities((prevState): SetStateAction<any> => [...prevState, ...opportunities]);
       setPaging(paging);
+      setOpportunities((prevState): SetStateAction<any> => (page > 1 ? [...prevState, ...opportunities] : opportunities));
     }
   }, [data]);
 
@@ -75,13 +81,15 @@ export const Opportunities: React.FC = () => {
             </div>
           </div>
         )}
-        <div className="row justify-content-center">
-          <div className="col-4">
-            <Button onClick={handleLoadMore} style={{ width: '100%', margin: '25px' }}>
-              Load More
-            </Button>
+        {page < paging.total_pages && (
+          <div className="row justify-content-center">
+            <div className="col-4">
+              <Button onClick={handleLoadMore} disabled={loading} style={{ width: '100%', margin: '25px' }}>
+                Load More
+              </Button>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

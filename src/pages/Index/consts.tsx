@@ -24,3 +24,10 @@ export const sortByData = [
     key: '+earliest_start_date',
   },
 ];
+
+export const initialState = {
+  sortBy: sortByData[0].key,
+  opportunities: [],
+  page: 1,
+  paging: { total_items: 0, current_page: 0, total_pages: 0 },
+};

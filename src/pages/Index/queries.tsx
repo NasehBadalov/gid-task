@@ -2,7 +2,7 @@ import { gql } from '@apollo/client';
 
 export const getAllOpportunities = gql`
   query getAllOpportunities($sort: String!, $page: Int!) {
-    allOpportunity(sort: $sort, page: $page) {
+    allOpportunity(sort: $sort, page: $page, per_page: 10) {
       data {
         id
         title
