@@ -37,6 +37,7 @@ export const Opportunities: React.FC = () => {
   const [isModalVisible, setIsModalVisible] = React.useState(initialState.isModalVisible);
   const [openedOpp, setOpenedOpp] = React.useState(initialState.openedOpp);
   const [newEditTitle, setNewEditTitle] = React.useState(initialState.newEditTitle);
+  const [newEditDesc, setNewEditDesc] = React.useState(initialState.newEditTitle);
 
   React.useEffect(() => {
     setOpportunities(initialState.opportunities);
@@ -70,7 +71,7 @@ export const Opportunities: React.FC = () => {
   };
 
   const handleEditModalMutation = () => {
-    editOpp({ variables: { id: openedOpp.id, opportunity: { title: newEditTitle } } }).then((res) => {
+    editOpp({ variables: { id: openedOpp.id, opportunity: { title: newEditTitle, description: newEditDesc } } }).then((res) => {
       setIsModalVisible(false);
       setOpenedOpp(initialState.openedOpp);
       setNewEditTitle(initialState.newEditTitle);
@@ -82,13 +83,17 @@ export const Opportunities: React.FC = () => {
     <>
       <ToastContainer />
       <Modal title="Edit Title" visible={isModalVisible} onOk={handleEditModalMutation} onCancel={() => setIsModalVisible(false)}>
-        <span>Old title:</span>
-        <br />
-        <b>{openedOpp.title}</b>
+        <span>Title:</span>
+        <Input placeholder="New title" value={newEditTitle} onChange={(e) => setNewEditTitle(e.target.value)} />
         <hr />
-        <span>New title:</span>
-        <br />
-        <Input placeholder="New title" onChange={(e) => setNewEditTitle(e.target.value)} />
+        <span>Description:</span>
+        <Input.TextArea
+          //
+          value={newEditDesc}
+          onChange={(e) => setNewEditDesc(e.target.value)}
+          placeholder="Controlled autosize"
+          autoSize={{ minRows: 3, maxRows: 5 }}
+        />
       </Modal>
       <div className="Panel">
         <div className="container-fluid">
@@ -146,8 +151,10 @@ export const Opportunities: React.FC = () => {
                 <OpportunityItem
                   key={opportunity.id}
                   opportunity={opportunity}
-                  onClick={(id: string, title: string) => {
-                    setOpenedOpp({ id, title });
+                  onClick={(id: string, title: string, description: string) => {
+                    setOpenedOpp({ id, title, description });
+                    setNewEditTitle(title);
+                    setNewEditDesc(description);
                     setIsModalVisible(true);
                   }}
                 />

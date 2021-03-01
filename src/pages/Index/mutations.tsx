@@ -5,6 +5,7 @@ export const updateOpportunity = gql`
     updateOpportunity(id: $id, opportunity: $opportunity) {
       id
       title
+      description
     }
   }
 `;

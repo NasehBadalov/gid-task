@@ -37,6 +37,7 @@ export const initialState = {
   durationType: EDurationType.short,
   programmes: [7, 8, 9],
   isModalVisible: false,
-  openedOpp: { id: '0', title: '' },
+  openedOpp: { id: '0', title: '', description: '' },
   newEditTitle: '',
+  newEditDesc: '',
 };

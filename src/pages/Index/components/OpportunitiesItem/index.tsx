@@ -49,7 +49,7 @@ export const OpportunityItem: React.FC<{ opportunity: IOpportunity; onClick: any
   };
 
   return (
-    <div className="Opportunities__item" onClick={() => onClick(id, title)}>
+    <div className="Opportunities__item" onClick={() => onClick(id, title, description)}>
       <div className="Opportunities__item-wrapper">
         <div className="row">
           <div className="col-3">
