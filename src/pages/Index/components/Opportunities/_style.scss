@@ -86,3 +86,29 @@
     }
   }
 }
+.Panel {
+  background-color: #f8f9fa;
+  display: flex;
+  align-items: center;
+  height: 100px;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-bottom: 50px;
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  &__block {
+    padding-right: 1rem;
+    &-label {
+      display: inline-block;
+      margin-bottom: 0;
+      margin-right: 12px;
+      color: #232a36;
+      font-size: 18px;
+      line-height: 26px;
+    }
+  }
+}

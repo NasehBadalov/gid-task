@@ -12,6 +12,12 @@ export enum EProgramShortNames {
   GE = 'GE',
 }
 
+export enum EProgramIds {
+  GV = 7,
+  GTa = 8,
+  GTe = 9,
+}
+
 export enum EDurationType {
   short = 'short',
   medium = 'medium',

@@ -5,8 +5,9 @@ import { EDurationNames, EDurationType, EProgramShortNames } from '../../enums';
 // Icons
 import { GtaIcon, GteIcon, GvIcon } from '../../../../assets/icons';
 
-export const OpportunityItem: React.FC<{ opportunity: IOpportunity }> = ({
+export const OpportunityItem: React.FC<{ opportunity: IOpportunity; onClick: any }> = ({
   opportunity: {
+    id,
     cover_photo: { url: image_url },
     title,
     programme,
@@ -15,6 +16,7 @@ export const OpportunityItem: React.FC<{ opportunity: IOpportunity }> = ({
     opportunity_duration_type: duration,
     branch,
   },
+  onClick,
 }) => {
   const renderProgramIcon = (programName: string) => {
     switch (programName) {
@@ -47,7 +49,7 @@ export const OpportunityItem: React.FC<{ opportunity: IOpportunity }> = ({
   };
 
   return (
-    <div className="Opportunities__item">
+    <div className="Opportunities__item" onClick={() => onClick(id, title)}>
       <div className="Opportunities__item-wrapper">
         <div className="row">
           <div className="col-3">

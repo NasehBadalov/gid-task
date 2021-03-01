@@ -1,3 +1,6 @@
+import { dateTimeToDate } from '../../helpers';
+import { EDurationType } from './enums';
+
 export const sortByData = [
   {
     label: 'Relevance',
@@ -30,4 +33,10 @@ export const initialState = {
   opportunities: [],
   page: 1,
   paging: { total_items: 0, current_page: 0, total_pages: 0 },
+  date: dateTimeToDate(new Date().toISOString()),
+  durationType: EDurationType.short,
+  programmes: [7, 8, 9],
+  isModalVisible: false,
+  openedOpp: { id: '0', title: '' },
+  newEditTitle: '',
 };
